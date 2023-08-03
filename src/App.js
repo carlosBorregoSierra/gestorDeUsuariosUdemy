@@ -1,24 +1,24 @@
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
 
 function App() {
+  const [formulario, setFormulario] = useState({name:''})
+  const handleChange=(e)=>{
+    setFormulario({
+    ...formulario,
+    [e.target.name]:e.target.value
+    })
+  }
+  console.log(formulario.name)
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <form>
+      <input name="name"
+      placeholder='Salomé'
+      value={formulario.name}
+      onChange={handleChange}
+      />
+      <p>Es:{formulario.name}</p>
+    </form>
   );
 }
 
